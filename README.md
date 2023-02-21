@@ -33,9 +33,15 @@ Instalación de módulo cross-env:
 npm i cross-env
 ```
 
+Instalación nodemon:
+
+```sh
+npm i nodemon
+```
+
 Creamos entorno de desarrollo editando el package.json y agregando en Scripts entrada: 
 
 ```sh
-"dev": "cross-env DEBUG=nodepop:* npm start"
+"dev": "cross-env DEBUG=nodepop:* PORT=3001 nodemon ./bin/www"
 ```
 

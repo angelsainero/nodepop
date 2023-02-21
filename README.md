@@ -26,3 +26,16 @@ Instalación de dependencias:
 cd nodepop
 nodepop> npm install
 ```
+
+Instalación de módulo cross-env:
+
+```sh
+npm i cross-env
+```
+
+Creamos entorno de desarrollo editando el package.json y agregando en Scripts entrada: 
+
+```sh
+"dev": "cross-env DEBUG=nodepop:* npm start"
+```
+

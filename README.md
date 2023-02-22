@@ -37,6 +37,7 @@ Instalación nodemon:
 
 ```sh
 npm i nodemon
+npm install --save express-validator
 ```
 
 Creamos entorno de desarrollo editando el package.json y agregando en Scripts entrada: 
@@ -45,3 +46,7 @@ Creamos entorno de desarrollo editando el package.json y agregando en Scripts en
 "dev": "cross-env DEBUG=nodepop:* PORT=3001 nodemon ./bin/www"
 ```
 
+# Instalación Mongoose
+```sh
+npm i mongoose --save
+```

@@ -7,5 +7,10 @@
   <body>
     <h1><%= title %></h1>
     <p>Welcome to <%= title %></p>
+
+    <h2>Lista de Anuncios</h2>
+      <% anuncios.forEach(anuncio => { %>
+        <p>Anuncio <%= anuncio.nombre %> precio <%= anuncio.precio %> euros</p>
+      <% }) %>
   </body>
 </html>

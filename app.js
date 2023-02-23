@@ -21,6 +21,8 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.locals.title = 'NodePop';
+
+app.use('/api/anuncios', require('./routes/api/anuncios'))
 app.use("/", require("./routes/home"));
 
 

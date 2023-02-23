@@ -7,13 +7,22 @@ const anuncioSchema = mongoose.Schema(
     venta: String,
     precio: Number,
     foto: String,
-    tags: {type: String}
+    
   },
   { collection: "anuncios" }
 );
 
-// crear el modelo de Agente
-const Anuncio = mongoose.model("Anuncios", anuncioSchema);  //lleva pluralizacion
+anuncioSchema.statics.lista = function(filtro, skip, sort){
+  const query = Anuncio.find(filtro);
+  query.skip(skip)  
+  query.sort(sort)
+  
+ 
+  return query.exec()
+}
 
-//exportar el modelo
+
+
+const Anuncio = mongoose.model("Anuncios", anuncioSchema);  
+
 module.exports = Anuncio;

@@ -17,11 +17,12 @@ router.get("/", async (req, res, next) => {
     const skip = req.query.skip; 
     //ordenación
     const sort = req.query.sort
+    const limit = req.query.limit;
    
 
     // Ejemplos:
     // http://localhost:3001/api/anuncios?skip=2&sort=nombre
-    // http://localhost:3001/api/anuncios?skip=2&sort=nombre&fields=nombre
+    // http://localhost:3001/api/anuncios?skip=2&sort=nombre&tags=lifestyle
 
 
     const filtro = {}
@@ -39,9 +40,10 @@ router.get("/", async (req, res, next) => {
       }
       
     if (filtreByName) {  
-      filtro.nombre = filtreByName
+      filtro.nombre = new RegExp('^' +
+      req.query.nombre, "i")
     }
-    const anuncios = await Anuncio.lista(filtro, skip, sort);
+    const anuncios = await Anuncio.lista(filtro, skip, limit, sort);
 
     res.json({ results: anuncios });
   } catch (error) {

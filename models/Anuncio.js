@@ -4,7 +4,7 @@ const mongoose = require("mongoose");
 const anuncioSchema = mongoose.Schema(
   {
     nombre: String,
-    venta: String,
+    venta: Boolean,
     precio: Number,
     foto: String,
     tags: [String]    
@@ -12,11 +12,13 @@ const anuncioSchema = mongoose.Schema(
   { collection: "anuncios" }
 );
 
-anuncioSchema.statics.lista = function(filtro, skip, sort){
+anuncioSchema.statics.lista = function(filtro, skip, limit, sort, fields){
   const query = Anuncio.find(filtro);
-  query.skip(skip)  
+  query.skip(skip)
+  query.limit(limit)
   query.sort(sort)
-  
+  query.select(fields) 
+
  
   return query.exec()
 }

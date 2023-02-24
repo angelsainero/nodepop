@@ -7,7 +7,7 @@ const anuncioSchema = mongoose.Schema(
     venta: String,
     precio: Number,
     foto: String,
-    
+    tags: [String]    
   },
   { collection: "anuncios" }
 );
@@ -20,6 +20,7 @@ anuncioSchema.statics.lista = function(filtro, skip, sort){
  
   return query.exec()
 }
+
 
 
 

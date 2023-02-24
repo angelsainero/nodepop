@@ -49,5 +49,39 @@ router.get("/", async (req, res, next) => {
   }
 });
 
+//  GET a /api/anuncios/tags
+router.get("/tags", async (req, res, next) => {
+  try {
+    
+    const tags = await Anuncio.distinct('tags');
+
+    res.json(tags);
+  } catch (error) {
+    next(error);
+  }
+});
+
+// Ejemplos:
+// http://localhost:3001/api/anuncios/tags
+
+
+// POST /api/anuncios (body)
+// Crea un anuncio
+router.post("/", async (req, res, next) => {
+  try {
+    const anuncioData = req.body;
+    
+    const anuncio = new Anuncio(anuncioData);
+      
+    const anuncioGuardado = await anuncio.save();
+    
+    res.json({ result: anuncioGuardado });
+
+  } catch (error) {
+    next(error);
+  }
+});
+
+// http://localhost:3001/api/anuncios?nombre=Rolex&venta=true&precio=300&foto=rolex.jpg&tags=watch
 
 module.exports = router;

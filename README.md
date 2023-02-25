@@ -16,7 +16,7 @@ creamos .gitignore
 node_modules
 ```
 
-# Instalación Express
+## Instalación Express
 ```sh
 npx express-generator nodepop --ejs
 ```
@@ -46,7 +46,35 @@ Creamos entorno de desarrollo editando el package.json y agregando en Scripts en
 "dev": "cross-env DEBUG=nodepop:* PORT=3001 nodemon ./bin/www"
 ```
 
-# Instalación Mongoose
+## Instalación Mongoose
 ```sh
 npm i mongoose --save
 ```
+## Generación de Script inicial DB
+```sh
+nodepop> npm run initDB
+```
+
+# Uso de la web y API
+
+## WEBSITE
+Acceso a la web 
+
+http://localhost:3001/
+
+Acceso a la web usando parámetros
+
+http://localhost:3001/?sort=precio&nombre=Impresora
+
+
+## API
+Ejemplos consumo de API
+
+http://localhost:3001/api/anuncios?skip=2&sort=nombre
+
+http://localhost:3001/api/anuncios?skip=2&sort=nombre&tags=lifestyle
+
+
+Creación de anuncios
+
+http://localhost:3001/api/anuncios?nombre=Rolex&venta=true&precio=300&foto=rolex.jpg&tags=watch

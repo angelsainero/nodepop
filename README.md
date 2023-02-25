@@ -51,6 +51,8 @@ Creamos entorno de desarrollo editando el package.json y agregando en Scripts en
 npm i mongoose --save
 ```
 ## Generación de Script inicial DB
+El script inicial borra genera la bbdd con 3 anuncios iniciales borrando lo que exista previamente en la bbdd
+
 ```sh
 nodepop> npm run initDB
 ```
@@ -58,23 +60,33 @@ nodepop> npm run initDB
 # Uso de la web y API
 
 ## WEBSITE
-Acceso a la web 
-
+- Acceso a la web:
 http://localhost:3001/
 
-Acceso a la web usando parámetros
-
+- Acceso a la web usando parámetros: 
 http://localhost:3001/?sort=precio&nombre=Impresora
 
 
 ## API
-Ejemplos consumo de API
+**Ejemplos consumo de API (Método GET):**
 
-http://localhost:3001/api/anuncios?skip=2&sort=nombre
+- Lista de anuncios con posibilidad de paginación.
+http://127.0.0.1:3001/api/anuncios?skip=1
 
-http://localhost:3001/api/anuncios?skip=2&sort=nombre&tags=lifestyle
+- filtro por tag:
+http://127.0.0.1:3001/api/anuncios?tags=lifestyle
+
+- filtro tipo de anuncio(venta o búsqueda): 
+http://127.0.0.1:3001/api/anuncios?venta=true
+
+- filtro por precio: 
+http://127.0.0.1:3001/api/anuncios?precio=49
+
+- Filtro por nombre de artículo (comienzo de letra):
+http://127.0.0.1:3001/api/anuncios?nombre=i
 
 
-Creación de anuncios
 
-http://localhost:3001/api/anuncios?nombre=Rolex&venta=true&precio=300&foto=rolex.jpg&tags=watch
+**API de Creación de anuncios (Método POST):**
+
+- http://localhost:3001/api/anuncios?nombre=Rolex&venta=true&precio=300&foto=rolex.jpg&tags=watch

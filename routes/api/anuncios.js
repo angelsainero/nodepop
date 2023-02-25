@@ -18,6 +18,7 @@ router.get("/", async (req, res, next) => {
     //ordenación
     const sort = req.query.sort
     const limit = req.query.limit;
+    
    
 
     // Ejemplos:

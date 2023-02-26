@@ -1,16 +1,41 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <link rel="stylesheet" href="stylesheets/skeuos.css">
+    <link rel="stylesheet" href="stylesheets/styles.css">
     <title><%= title %></title>
-    
+    <header>
+      <h3><%= title %></h3>
+  </header>
   </head>
   <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
+    <main>
 
-    <h2>Lista de Anuncios</h2>
-      <% anuncios.forEach(anuncio => { %>
-        <p>Anuncio <%= anuncio.nombre %> precio <%= anuncio.precio %> euros</p>
-      <% }) %>
+      <h3>Bienvenido a <%= title %></h3>
+      <table class="paper">
+        <thead>
+          <tr>
+            <th colspan="3">Listado de Anuncios</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><b>Objeto</b></td>
+            <td><b>¿Se vende?</b></td>
+            <td><b>Precio</b></td>
+          </tr>
+          <% anuncios.forEach(anuncio => { %>
+            <tr>
+              <td><%= anuncio.nombre %> </td>
+              <td><%= anuncio.venta %></td>
+              <td><%= anuncio.precio %></td>
+            </tr>
+            <% }) %>
+          </tbody>
+        </table>
+      </main>
+        
+        
+        
   </body>
 </html>

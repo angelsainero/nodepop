@@ -58,6 +58,9 @@ nodepop> npm run initDB
 ```
 
 # Uso de la web y API
+```sh
+nodepop> npm run dev
+```
 
 ## WEBSITE
 - Acceso a la web:

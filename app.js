@@ -3,6 +3,7 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+const i18n =require('./lib/i18nConfigure.js');
 
 require('./lib/connectMongoose');
 
@@ -22,6 +23,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.locals.title = 'NodePop';
 
+app.use(i18n.init);
 app.use('/api/anuncios', require('./routes/api/anuncios'))
 app.use("/", require("./routes/home"));
 

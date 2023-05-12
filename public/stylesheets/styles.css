@@ -102,3 +102,9 @@ button {
   margin-right: 1rem;
   font-size: 32px;
 }
+
+nav {
+  display:flex;
+  align-items: center;
+  padding: 10px;
+}

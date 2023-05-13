@@ -10,12 +10,15 @@
   </head>
   <body>
     <nav>
-      <a href="">
-        <button>ES</button>
-      </a>
-      <a href="">
-        <button>EN</button>
-      </a>
+      <% getLocales().forEach(locale =>{ %>
+
+        <a href="/change-locale/<%= locale %>">
+          <button><%= locale %>  </button>
+          <!--ruta de la cookie con la que indicaremos al navegador si es el ingles o no-->          
+        </a>
+      <%})%>
+
+
     </nav>
     <main>
       <h3><%= __('Bienvenido a') %> <%= title %></h3>

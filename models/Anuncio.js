@@ -26,6 +26,6 @@ anuncioSchema.statics.lista = function(filtro, skip, limit, sort, fields){
 
 
 
-const Anuncio = mongoose.model("Anuncios", anuncioSchema);  
+const Anuncio = mongoose.model("Anuncio", anuncioSchema);  
 
 module.exports = Anuncio;

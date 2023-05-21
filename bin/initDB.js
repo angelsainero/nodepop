@@ -1,4 +1,6 @@
 "use strict";
+require('dotenv').config();
+
 const Anuncio = require('../models/Anuncio')
 const Usuario = require('../models/Usuario')
 
@@ -53,9 +55,8 @@ async function initUsuarios() {
   const deleted = await Usuario.deleteMany();
   console.log(`Eliminados ${deleted.deletedCount} usuarios.`);
   //crear usuarios iniciales
-  const inserted = await Usuario.insertMany([
-    { email: "prueba@prueba.com", password: "1234" },
-    { email: "prueba2@prueba.com", password: "1234" },
+  const inserted = await Usuario.insertMany([    
+    { email: "user@example.com", password: await Usuario.hashPassword('1234') },
   ]);
   console.log(`Creados ${inserted.length} usuarios`);
 }

@@ -1,13 +1,27 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
+const bcrypt = require('bcrypt');
+
 
 //crear esquema
 const usuarioSchema = mongoose.Schema({
-  email: String,
+  email: { type: String, unique: true },
   password: String,
-});
+})
+
+// método estático
+usuarioSchema.statics.hashPassword = function(passwordEnClaro) {
+  return bcrypt.hash(passwordEnClaro, 7)
+}
+
+
+// método de instancia
+usuarioSchema.methods.comparePassword = function(passwordEnClaro) {
+  return bcrypt.compare(passwordEnClaro, this.password);
+}
 
 //crear modelo
-const Usuario = mongoose.model("Usuario", usuarioSchema);
+const Usuario = mongoose.model('Usuario', usuarioSchema);
 
 //exportar modelo
 module.exports = Usuario;
+

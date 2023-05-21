@@ -4,6 +4,10 @@ var path = require("path");
 var cookieParser = require("cookie-parser");
 var logger = require("morgan");
 const i18n = require("./lib/i18nConfigure.js");
+const LoginController = require("./controllers/loginController.js");
+const jwtAuthMiddleware = require('./lib/jwtAuthMiddleware.js')
+
+require('dotenv').config()
 
 require("./lib/connectMongoose");
 
@@ -13,14 +17,20 @@ var app = express();
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
 app.set("x-powered-by", false);
+
+app.locals.title = "NodePop";
+
 app.use(logger("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
-app.locals.title = "NodePop";
-app.use("/api/anuncios", require("./routes/api/anuncios"));
+const loginController = new LoginController();
+
+//rutas del api
+app.use("/api/anuncios", jwtAuthMiddleware, require("./routes/api/anuncios"));
+app.post("/api/authenticate", loginController.postAPI);
 
 app.use(i18n.init);
 app.use("/", require("./routes/home"));

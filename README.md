@@ -90,6 +90,6 @@ http://127.0.0.1:3001/api/anuncios?nombre=i
 
 
 
-**API de Creación de anuncios (Método POST):**
+**API de Creación de anuncios (Método POST):**.
 
 - http://localhost:3001/api/anuncios?nombre=Rolex&venta=true&precio=300&foto=rolex.jpg&tags=watch
